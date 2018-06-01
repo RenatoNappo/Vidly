@@ -5,22 +5,27 @@
 }
 
 
-<h2>Movies</h2>
-<br/>
-<ol>
-    @if (Model.Movies.Count == 0)
-    {
-        <h4>There are currently no movies to rent.</h4>
-    }
-    else
-    {
-        foreach (var m in Model.Movies)
-        {
-            <li>
-                @Html.ActionLink(m.Name, "MovieDetails", "Movies", new { id = m.Id }, null)
-            </li>
-        }
-    }
-</ol>
-
-
+@if(Model.Movies.Count == 0)
+{
+    <h4>There are currently no movies to rent.</h4>
+}
+else
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Movies</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Movies)
+            {
+                <tr class="table-active">
+                    <td>
+                        @Html.ActionLink(m.Name, "MovieDetails", "Movies", new { id = m.Id }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

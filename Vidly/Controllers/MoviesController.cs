@@ -71,15 +71,15 @@ namespace Vidly.Controllers
 
 
         [Route("movies/MovieDetails/{id}")]
-        public ActionResult MovieDetails(int? Id)
+        public ActionResult MovieDetails(int? id)
         {
-            if(!Id.HasValue)
+            if(!id.HasValue)
             {
                 return new RedirectResult("/movies");
             }
             else
             {
-                List<Movie> FoundMovies = movieList.Where(m => m.Id == Id).ToList();
+                List<Movie> FoundMovies = movieList.Where(m => m.Id == id).ToList();
                 if(FoundMovies.Count > 0)
                 {
                     return View((Movie)FoundMovies[0]);
